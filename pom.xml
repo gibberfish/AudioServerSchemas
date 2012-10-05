@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mindbadger.audioserver.schema</groupId>
+  <artifactId>AudioServerSchemas</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>AudioServerSchemas</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+	
+    <dependency>
+        <groupId>xmlbeans</groupId>
+        <artifactId>xbean</artifactId>
+        <version>2.2.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>stax</groupId>
+        <artifactId>stax</artifactId>
+        <version>1.1.1-dev</version>
+        <scope>compile</scope>
+        <exclusions>
+            <exclusion>
+                <artifactId>xmlbeans-jsr173-api</artifactId>
+                <groupId>xmlbeans</groupId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+    <dependency>
+        <groupId>net.sf.saxon</groupId>
+        <artifactId>saxon</artifactId>
+        <version>8.7</version>
+    </dependency>
+  </dependencies>
+  
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xmlbeans-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>Build-XMLBeans</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>xmlbeans</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <inherited>true</inherited>
+                <configuration>
+                    <memoryInitialSize>32m</memoryInitialSize>
+                    <memoryMaximumSize>64m</memoryMaximumSize>
+					<outputJar>${basedir}/lib/valuationSchema-0.4.jar</outputJar>
+                    <schemaDirectory>src/main/xsd</schemaDirectory>
+                    <verbose>true</verbose>
+                </configuration>
+            </plugin>
+			
+        </plugins>
+    </build>
+</project>
