@@ -25,7 +25,7 @@
     <dependency>
         <groupId>xmlbeans</groupId>
         <artifactId>xbean</artifactId>
-        <version>2.2.0</version>
+        <version>2.4.0</version>
     </dependency>
 
     <dependency>
@@ -55,6 +55,8 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>xmlbeans-maven-plugin</artifactId>
+				<version>2.3.3</version>
+				
                 <executions>
                     <execution>
                         <id>Build-XMLBeans</id>
@@ -71,6 +73,7 @@
 					<outputJar>${basedir}/lib/valuationSchema-0.4.jar</outputJar>
                     <schemaDirectory>src/main/xsd</schemaDirectory>
                     <verbose>true</verbose>
+					<javaSource>1.5</javaSource>
                 </configuration>
             </plugin>
 			
